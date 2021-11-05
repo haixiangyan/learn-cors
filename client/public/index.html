@@ -29,6 +29,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      function jsonpCallback(params) {
+        alert('执行 public/index.html 里定义的 jsonpCallback 函数，并传入' + params + '参数');
+      }
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -4,19 +4,19 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', (req, res) =>  {
   res.json({
-    msg: 'get',
+    msg: 'index get',
   })
 });
 
 router.post('/', (req, res) => {
   res.json({
-    msg: 'post',
+    msg: 'index post',
   })
 })
 
 router.put('/', (req, res) => {
   res.json({
-    msg: 'put',
+    msg: 'index put',
   })
 })
 

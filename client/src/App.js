@@ -34,12 +34,27 @@ function App() {
     console.log('complexPost', response.data);
   }
 
+  const jsonp = async () => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://localhost:9000/user?callback_name=jsonpCallback'
+    document.body.appendChild(script);
+    document.body.removeChild(script);
+  }
+
+  const fetchUser = async () => {
+    const response = await axios.get('http://localhost:9000/user')
+    console.log('fetchUser', response.data);
+  }
+
   return (
     <div className="App">
       <button onClick={simpleGet}>simple get</button>
       <button onClick={simplePost}>simple post</button>
       <button onClick={complexPost}>complex post</button>
       <button onClick={complexPut}>complex put</button>
+      <button onClick={jsonp}>jsonp</button>
+      <button onClick={fetchUser}>fetch user</button>
     </div>
   );
 }
