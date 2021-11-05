@@ -1,32 +1,45 @@
-import logo from './logo.svg';
 import axios from 'axios';
-import './App.css';
-import {useEffect} from "react";
 
 function App() {
-  useEffect(() => {
-    axios.get('http://localhost:9000')
-      .then(response => {
-        console.log('data', response.data);
-      })
-  }, []);
+  const simpleGet = async () => {
+    const response = await axios.get('http://localhost:9000')
+    console.log('simpleGet', response.data);
+  }
+
+  const simplePost = async () => {
+    const response = await axios.post('http://localhost:9000', {
+      name: 'Jack',
+      password: '123',
+    }, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }
+    })
+    console.log('simplePost', response.data);
+  }
+
+  const complexPost = async () => {
+    const response = await axios.post('http://localhost:9000', {
+      name: 'Jack',
+      password: '123',
+    })
+    console.log('complexPost', response.data);
+  }
+
+  const complexPut = async () => {
+    const response = await axios.put('http://localhost:9000', {
+      name: 'Jack',
+      password: '123',
+    })
+    console.log('complexPost', response.data);
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={simpleGet}>simple get</button>
+      <button onClick={simplePost}>simple post</button>
+      <button onClick={complexPost}>complex post</button>
+      <button onClick={complexPut}>complex put</button>
     </div>
   );
 }
